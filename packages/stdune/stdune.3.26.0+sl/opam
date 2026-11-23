@@ -1,0 +1,46 @@
+opam-version: "2.0"
+synopsis: "Dune's unstable standard library"
+description:
+  "This library offers no backwards compatibility guarantees. Use at your own risk."
+maintainer: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+license: "MIT"
+homepage: "https://github.com/ocaml/dune"
+doc: "https://dune.readthedocs.io/"
+bug-reports: "https://github.com/ocaml/dune/issues"
+depends: [
+  "dune" {>= "3.25"}
+  "ocaml" {>= "4.14"}
+  "base-unix"
+  "csexp" {>= "1.5.0"}
+  "dyn" {= version}
+  "fs-io" {= version}
+  "ordering" {= version}
+  "pp" {>= "2.0.0"}
+  "top-closure" {= version}
+  "odoc" {with-doc}
+]
+dev-repo: "git+https://github.com/ocaml/dune.git"
+x-maintenance-intent: ["none"]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@doc" {with-doc}
+  ]
+]
+url {
+  src:
+    "https://github.com/SkyLabsAI/dune/archive/refs/tags/3.26.0+sl.tar.gz"
+  checksum: [
+    "sha256=474e99e4915e800f57cf9e9219a6665af59956be09759cafe2758b52fe435ee5"
+    "sha512=f2d572a8a4be9d857e6489b08562a518cee320dbb65716e1de47b4dcfa50a4ad9a62ca5508983f260f497f979996b74abb85e5b877b68a7d1bb65de58f99c1b4"
+  ]
+}
+x-commit-hash: "eed18089bc3d96db87f66f7fb5af711caa8aa173"
